@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int opcMENU;
+    int resposta;
+
+    // Laço de repetição principal (para o menu e jogar novamente)
+    do {
+        // Menu Principal
+        printf("\n");
+        printf("JOGO DE PERGUNTAS EM C\n");
+        printf("\n");
+        printf("1 - Iniciar Jogo\n");
+        printf("2 - Sair\n");
+        printf("Escolha: ");
+        scanf("%d", &opcMENU);
+        while (getchar() != '\n'); // Limpa o buffer de entrada
+
+        if (opcMENU == 1) {
+            // PERGUNTA 1 
+            printf("\n1) Qual o nome do criador da linguagem C?\n");
+            printf("1 - Bill Gates\n2 - Dennis Ritchie\n3 - Mark Zuckerberg\n4 - Linus Torvalds\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+            if (resposta == 2) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 2 (Dennis Ritchie).\n");
+            }
+
+            // PERGUNTA 2
+            printf("\n2) Qual simbolo e usado para representar o 'E' logico em C?\n");
+            printf("1 - ||\n2 - ! \n3 - &&\n4 - ==\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+             if (resposta == 3) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 3 (&&).\n");
+            }
+
+            // PERGUNTA 3
+            printf("\n3) O que o comando 'scanf' faz?\n");
+            printf("1 - Imprime na tela\n2 - Limpa a memoria\n3 - Finaliza o programa\n4 - Le uma entrada do usuario\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+            if (resposta == 4) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 4 (Le uma entrada).\n");
+            }
+
+            // PERGUNTA 4
+            printf("\n4) Qual o nome do professor(a) de Programacao?\n");
+            printf("1 - Pedro Girotto\n2 - Vitor Hugo\n3 - Polyana Fonseca\n4 - Eliane Alves\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+            if (resposta == 1) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 1 (Pedro Girotto).\n");
+            }
+
+            // PERGUNTA 5
+            printf("\n5) Qual o valor da soma 10 + 5 * 2?\n");
+            printf("1 - 30\n2 - 25\n3 - 15\n4 - 20\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+            if (resposta == 4) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 4 (20).\n");
+            }
+
+            // Ao final das perguntas ele irá perguntar se quer que o jogo se repita
+            printf("\n--- FIM DA PARTIDA ---\n");
+            printf("Deseja jogar novamente?\n1 - Sim (Repetir perguntas)\n2 - Nao (Voltar ao menu)\nEscolha: ");
+            scanf("%d", &opcMENU);
+            while (getchar() != '\n'); // Limpa o buffer
+
+        } else if (opcMENU == 2) {
+            printf("Saindo do programa...\n");
+        } else {
+            printf("Opcao invalida!\n");
+        }
+
+    } while (opcMENU != 2);
+
+    return 0;
+}
