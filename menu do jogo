@@ -1,1 +1,418 @@
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <windows.h>
+
+// --- PROTÓTIPOS ---
+
+void jogoPerguntaResposta();
+void jogoCobraNaCaixa();
+void jogoGousmasWar();
+int lerEntrada(int min, int max); // Função do 3º jogo
+
+// ================
+//  MENU PRINCIPAL
+// ================
+
+int main() {
+    srand(time(NULL)); 
+    int opcaoMenuPrincipal;
+
+    do {
+        system("cls");
+        printf("=================================\n");
+        printf("         SISTEMA DE JOGOS        \n");
+        printf("=================================\n");
+        printf("1: Pergunta e Resposta\n");
+        printf("2: Cobra na Caixa!\n");
+        printf("3: Gousmas War\n");
+        printf("4: Sair\n");
+        printf("---------------------------------\n");
+        printf("Escolha uma opcao: ");
+        
+        scanf("%d", &opcaoMenuPrincipal);
+        while (getchar() != '\n'); // Limpa o buffer
+
+        // Avalia a variavel 'opcaoMenuPrincipal' para decidir qual caminho (case) seguir
+        switch (opcaoMenuPrincipal) { 
+            
+            // Se o valor digitado pelo usuario for 1, entra neste bloco
+            case 1: 
+                system("cls"); // Limpa a tela do terminal (Clear Screen) para organizar o visual
+                printf("\n[DESCRICAO]: Teste seus conhecimentos!\n"); // Exibe a descricao do jogo
+                Sleep(3000); // Pausa a execucao por 3000 milissegundos (3 segundos) para o jogador ler
+                jogoPerguntaResposta(); // Chama a funcao que contem o codigo do 1º jogo
+                break; // Obrigatorio: Encerra o 'switch' para impedir que o codigo vaute para o 'case 2'
+
+            // Se o valor digitado for 2, entra neste bloco
+            case 2:
+                system("cls"); // Limpa a tela novamente
+                printf("\n[DESCRICAO]: Encontre o botao e evite a cobra!\n"); 
+                Sleep(3000); // Aguarda 3 segundos
+                jogoCobraNaCaixa(); // Chama a funcao que contem o codigo do 2º jogo
+                break; // Encerra o 'switch' e volta para o menu
+
+            // Se o valor digitado for 3, entra neste bloco
+            case 3:
+                system("cls"); // Limpa a tela
+                printf("\n[DESCRICAO]: Batalha de gosmas!\n");
+                Sleep(3000); // Aguarda 3 segundos
+                jogoGousmasWar(); // Chama a funcao que contem o codigo do 3º jogo
+                break; // Encerra o 'switch'
+
+            // Se o valor digitado for 4 (Sair)
+            case 4:
+                // Apenas exibe a mensagem de despedida. Nao precisa de 'Sleep' ou limpar tela.
+                printf("\nSaindo do sistema... Ate logo!\n"); 
+                break; // Encerra o 'switch'
+
+            // O 'default' funciona como um "Se nenhuma das opcoes acima for verdadeira"
+            default:
+                // Exibe uma mensagem de erro caso o usuario digite 5, 9, letras, etc.
+                printf("\nOpcao invalida! Tente novamente.\n"); 
+                Sleep(2000); // Aguarda 2 segundos para o usuario conseguir ler o erro
+                // Nao precisa de 'break' aqui pois e a ultima opcao do switch
+        }
+
+    // Condicao do laco 'do...while' (Faca... Enquanto)
+    // Ele avalia: A opcao escolhida e diferente (!=) de 4? 
+    // Se SIM (ex: escolheu 1), ele repete o menu inteiro. Se NAO (escolheu 4), o laco se quebra e o programa fecha.
+    } while (opcaoMenuPrincipal != 4);
+    return 0;
+}
+
+// ==========================================
+// CÓDIGO DO 1º JOGO (PERGUNTAS E RESPOSTAS)
+// ==========================================
+
+void jogoPerguntaResposta() {
+    int opcMENU;
+    int resposta;
+
+    // Laço de repetição principal (para o menu e jogar novamente)
+    do {
+        // Menu Principal
+        printf("\n");
+        printf("JOGO DE PERGUNTAS EM C\n");
+        printf("\n");
+        printf("1 - Iniciar Jogo\n");
+        printf("2 - Sair\n");
+        printf("Escolha: ");
+        scanf("%d", &opcMENU);
+        while (getchar() != '\n'); // Limpa o buffer de entrada
+
+        if (opcMENU == 1) {
+            // PERGUNTA 1 
+            printf("\n1) Qual o nome do criador da linguagem C?\n");
+            printf("1 - Bill Gates\n2 - Dennis Ritchie\n3 - Mark Zuckerberg\n4 - Linus Torvalds\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+            if (resposta == 2) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 2 (Dennis Ritchie).\n");
+            }
+
+            // PERGUNTA 2
+            printf("\n2) Qual simbolo e usado para representar o 'E' logico em C?\n");
+            printf("1 - ||\n2 - ! \n3 - &&\n4 - ==\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+             if (resposta == 3) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 3 (&&).\n");
+            }
+
+            // PERGUNTA 3
+            printf("\n3) O que o comando 'scanf' faz?\n");
+            printf("1 - Imprime na tela\n2 - Limpa a memoria\n3 - Finaliza o programa\n4 - Le uma entrada do usuario\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+            if (resposta == 4) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 4 (Le uma entrada).\n");
+            }
+
+            // PERGUNTA 4
+            printf("\n4) Qual o nome do professor(a) de Programacao?\n");
+            printf("1 - Pedro Girotto\n2 - Vitor Hugo\n3 - Polyana Fonseca\n4 - Eliane Alves\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+            if (resposta == 1) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 1 (Pedro Girotto).\n");
+            }
+
+            // PERGUNTA 5
+            printf("\n5) Qual o valor da soma 10 + 5 * 2?\n");
+            printf("1 - 30\n2 - 25\n3 - 15\n4 - 20\n");
+            printf("Sua resposta: ");
+            scanf("%d", &resposta);
+            while (getchar() != '\n'); // Limpa o buffer
+
+            if (resposta == 4) {
+                printf("Correto!\n");
+            } else {
+                printf("Incorreto! A resposta correta era a 4 (20).\n");
+            }
+
+            // Ao final das perguntas ele irá perguntar se quer que o jogo se repita
+            printf("\n--- FIM DA PARTIDA ---\n");
+            printf("Deseja jogar novamente?\n1 - Sim (Repetir perguntas)\n2 - Nao (Voltar ao menu)\nEscolha: ");
+            scanf("%d", &opcMENU);
+            while (getchar() != '\n'); // Limpa o buffer
+
+        } else if (opcMENU == 2) {
+            printf("Saindo do programa...\n");
+        } else {
+            printf("Opcao invalida!\n");
+        }
+
+    } while (opcMENU != 2);
+}
+
+// ====================================
+// CÓDIGO DO 2º JOGO (COBRA NA CAIXA)
+// ====================================
+
+void jogoCobraNaCaixa() {
+	
+   srand(time(NULL)); // Inicializa o gerador de números aleatórios
+
+    int opcMENU;
+    int i; // Variável de controle para os laços declarada fora para compatibilidade
+
+    do {
+        printf("\nCOBRA NA CAIXA!\n");
+        printf("1 - Jogar\n2 - Sair\nEscolha: ");
+        scanf("%d", &opcMENU);
+        while (getchar() != '\n'); // Limpa o buffer de entrada
+
+        if (opcMENU == 1) {
+            int botao, cobra, escolha, jogAtual;
+            int caixas[5] = {0, 0, 0, 0, 0}; // 0 = fechada, 1 = aberta
+            int fimDeJogo = 0;
+
+            // 1. Sorteio das caixas
+            botao = rand() % 5 + 1;
+            do {
+                cobra = rand() % 5 + 1;
+            } while (cobra == botao);
+
+            // 2. Escolha dos personagens
+            const char* personagens[] = {"Saldanha", "Lobato", "Girotto", "Jose", "Mumia", "Aleixo", "Bieri"}; // const char* = tem a função de guardar a lista de nomes dos personagens de uma forma inteligente e segura (fixar).
+            int n1, n2;
+
+            printf("\nPersonagens disponiveis:\n");
+            // CORREÇÃO: i já declarada no início do main
+            for (i = 0; i < 7; i++) {
+                printf("%d - %s\n", i + 1, personagens[i]);
+            }
+
+            printf("Jogador 1, escolha seu personagem (1-7): ");
+            scanf("%d", &n1);
+            while (getchar() != '\n'); 
+            
+            printf("Jogador 2, escolha seu personagem (1-7): ");
+            scanf("%d", &n2);
+            while (getchar() != '\n'); 
+
+            // 3. Sorteia quem começa
+            jogAtual = rand() % 2 + 1;
+            
+
+            // 4. Loop de Turnos
+            while (fimDeJogo == 0) {
+                printf("\n--- TURNO DO JOGADOR %d (%s) ---", jogAtual, (jogAtual == 1) ? personagens[n1 - 1] : personagens[n2 - 1]); // if/else Escrito em uma linha só
+                printf("\nCaixas disponiveis: ");
+                
+                // CORREÇÃO: Uso da variável i declarada externamente
+                for (i = 0; i < 5; i++) {
+                    if (caixas[i] == 0) {
+                        printf("[%d] ", i + 1);
+                    }
+                }
+
+                printf("\nEscolha uma caixa: ");
+                scanf("%d", &escolha);
+                while (getchar() != '\n'); 
+
+                if (escolha < 1 || escolha > 5 || caixas[escolha - 1] == 1) {
+                    printf("Escolha invalida ou caixa ja aberta! Tente novamente.\n");
+                    continue; 
+                }
+
+                caixas[escolha - 1] = 1;
+
+                if (escolha == botao) {
+                    printf("PARABENS! Voce encontrou o BOTAO e a porta abriu! JOGADOR %d (%s) VENCEU!\n", jogAtual, (jogAtual == 1) ? personagens[n1 - 1] : personagens[n2 - 1]);
+                    fimDeJogo = 1;
+                } else if (escolha == cobra) {
+                    printf("QUE AZAR! Voce encontrou a COBRA! JOGADOR %d (%s) PERDEU!\n", jogAtual, (jogAtual == 1) ? personagens[n1 - 1] : personagens[n2 - 1]);
+                    fimDeJogo = 1;
+                } else {
+                    printf("A caixa estava vazia... O turno passa.\n");
+                    jogAtual = (jogAtual == 1) ? 2 : 1;
+                }
+            }
+
+            printf("\nDeseja:\n1 - Jogar Novamente\n2 - Voltar ao Menu\nEscolha: ");
+            int subOpc;
+            scanf("%d", &subOpc);
+            while (getchar() != '\n');
+            
+            if (subOpc == 1) {
+                opcMENU = 1; // Mantém no loop de jogo
+            } else {
+                opcMENU = 0; // Volta para o menu principal (diferente de 2 para não sair do programa)
+            }
+        }
+    } while (opcMENU != 2);
+}
+
+// ==================================
+//  CÓDIGO DO 3º JOGO (GOUSMAS WAR!)
+// ==================================
+
+int lerEntrada(int min, int max) {
+    int valor;
+    while (1) {
+        if (scanf("%d", &valor) == 1 && valor >= min && valor <= max) {
+            return valor;
+        } else {
+            while(getchar() != '\n'); // Limpa o buffer
+            printf("Entrada invalida! Por favor, insira um numero entre %d e %d: ", min, max);
+        }
+    }
+}
+
+void jogoGousmasWar() {
+    int j1G1 = 1, j1G2 = 1, j2G1 = 1, j2G2 = 1;
+    int turno = 1, opcao, origem, alvo, forca;
+
+    while((j1G1 > 0 || j1G2 > 0) && (j2G1 > 0 || j2G2 > 0)) {
+        system("cls");
+        
+        printf("--- GOUSMAS WAR ---\n\n");
+        printf("JOGADOR 1 [Gosma 1: %d] \n", j1G1);
+        printf("JOGADOR 1 [Gosma 2: %d] \n\n", j1G2);
+        printf("JOGADOR 2 [Gosma 1: %d] \n", j2G1);
+        printf("JOGADOR 2 [Gosma 2: %d] \n\n", j2G2);
+        
+        printf("VEZ DO JOGADOR %d: \n", turno);
+        printf("1 - ATACAR\n");
+        printf("2 - DIVIDIR/REDISTRIBUIR GOSMAS\n");
+        printf("Escolha: ");
+        
+        opcao = lerEntrada(1, 2);
+        
+        if(opcao == 1) {
+            printf("\nQUAL GOSMA USAR PARA ATACAR? (1 ou 2): ");
+            origem = lerEntrada(1, 2);
+            
+            printf("QUAL GOSMA INIMIGA ATACAR? (1 ou 2): ");
+            alvo = lerEntrada(1, 2);
+            
+            if (turno == 1) {
+                forca = (origem == 1) ? j1G1 : j1G2; 
+                if (forca > 0) {
+                    if (alvo == 1 && j2G1 > 0) { 
+                        j2G1 += forca; 
+                        turno = 2; 
+                    } else if (alvo == 2 && j2G2 > 0) { 
+                        j2G2 += forca; 
+                        turno = 2; 
+                    } else {
+                        printf("\nEsta gosma inimiga ja esta morta! Escolha outra.\n");
+                        Sleep(2000);
+                        continue; 
+                    }
+                } else {
+                    printf("\nSua gosma de origem esta morta e nao pode atacar!\n");
+                    Sleep(2000);
+                    continue;
+                }
+            } else {
+                forca = (origem == 1) ? j2G1 : j2G2;
+                if (forca > 0) {
+                    if (alvo == 1 && j1G1 > 0) { 
+                        j1G1 += forca; 
+                        turno = 1; 
+                    } else if (alvo == 2 && j1G2 > 0) { 
+                        j1G2 += forca; 
+                        turno = 1; 
+                    } else {
+                        printf("\nEsta gosma inimiga ja esta morta! Escolha outra.\n");
+                        Sleep(2000);
+                        continue;
+                    }
+                } else {
+                    printf("\nSua gosma de origem esta morta e nao pode atacar!\n");
+                    Sleep(2000);
+                    continue;
+                }
+            }
+ 
+            if(j1G1 > 5) j1G1 = 0;
+            if(j1G2 > 5) j1G2 = 0;
+            if(j2G1 > 5) j2G1 = 0;
+            if(j2G2 > 5) j2G2 = 0;
+
+        } else if (opcao == 2) {
+            int dividiu = 0;
+            int soma, novaG1, novaG2;
+
+            if (turno == 1) {
+                soma = j1G1 + j1G2;
+                novaG1 = soma / 2;
+                novaG2 = soma - novaG1; 
+                
+                if (soma >= 2 && !((novaG1 == j1G1 && novaG2 == j1G2) || (novaG1 == j1G2 && novaG2 == j1G1))) {
+                    j1G1 = novaG1;
+                    j1G2 = novaG2;
+                    dividiu = 1;
+                }
+            } else {
+                soma = j2G1 + j2G2;
+                novaG1 = soma / 2;
+                novaG2 = soma - novaG1;
+                
+                if (soma >= 2 && !((novaG1 == j2G1 && novaG2 == j2G2) || (novaG1 == j2G2 && novaG2 == j2G1))) {
+                    j2G1 = novaG1;
+                    j2G2 = novaG2;
+                    dividiu = 1;
+                }
+            }
+            
+            if(dividiu == 1) {
+                turno = (turno == 1) ? 2 : 1; 
+            } else {
+                printf("\nImpossivel dividir! Isso nao alteraria suas gosmas ou voce nao tem pontos suficientes.\n");
+                Sleep(3000);
+                continue;
+            }
+        }
+    }
+    
+    system("cls");
+    printf("--- FIM DE JOGO ---\n\n");
+    if(j1G1 == 0 && j1G2 == 0) {
+        printf("?? JOGADOR 2 VENCEU A GUERRA DAS GOSMAS! ??\n\n");
+    } else {
+        printf("?? JOGADOR 1 VENCEU A GUERRA DAS GOSMAS! ??\n\n");
+    }
+    
+    system("pause");
+}
