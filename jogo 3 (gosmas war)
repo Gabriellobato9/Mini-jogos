@@ -1,0 +1,136 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+
+int lerEntrada(int min, int max) {
+    int valor;
+    while (1) {
+        if (scanf("%d", &valor) == 1 && valor >= min && valor <= max) {
+            return valor;
+        } else {
+            while(getchar() != '\n'); // Limpa o buffer
+            printf("Entrada invalida! Por favor, insira um numero entre %d e %d: ", min, max);
+        }
+    }
+}
+
+int main() {
+    int j1G1 = 1, j1G2 = 1, j2G1 = 1, j2G2 = 1;
+    int turno = 1, opcao, origem, alvo, forca;
+
+    while((j1G1 > 0 || j1G2 > 0) && (j2G1 > 0 || j2G2 > 0)) {
+        system("cls");
+        
+        printf("--- GOUSMAS WAR ---\n\n");
+        printf("JOGADOR 1 [Gosma 1: %d] \n", j1G1);
+        printf("JOGADOR 1 [Gosma 2: %d] \n\n", j1G2);
+        printf("JOGADOR 2 [Gosma 1: %d] \n", j2G1);
+        printf("JOGADOR 2 [Gosma 2: %d] \n\n", j2G2);
+        
+        printf("VEZ DO JOGADOR %d: \n", turno);
+        printf("1 - ATACAR\n");
+        printf("2 - DIVIDIR/REDISTRIBUIR GOSMAS\n");
+        printf("Escolha: ");
+        
+        opcao = lerEntrada(1, 2);
+        
+        if(opcao == 1) {
+            printf("\nQUAL GOSMA USAR PARA ATACAR? (1 ou 2): ");
+            origem = lerEntrada(1, 2);
+            
+            printf("QUAL GOSMA INIMIGA ATACAR? (1 ou 2): ");
+            alvo = lerEntrada(1, 2);
+            
+            if (turno == 1) {
+                forca = (origem == 1) ? j1G1 : j1G2; 
+                if (forca > 0) {
+                    if (alvo == 1 && j2G1 > 0) { 
+                        j2G1 += forca; 
+                        turno = 2; 
+                    } else if (alvo == 2 && j2G2 > 0) { 
+                        j2G2 += forca; 
+                        turno = 2; 
+                    } else {
+                        printf("\nEsta gosma inimiga ja esta morta! Escolha outra.\n");
+                        Sleep(2000);
+                        continue; 
+                    }
+                } else {
+                    printf("\nSua gosma de origem esta morta e nao pode atacar!\n");
+                    Sleep(2000);
+                    continue;
+                }
+            } else {
+                forca = (origem == 1) ? j2G1 : j2G2;
+                if (forca > 0) {
+                    if (alvo == 1 && j1G1 > 0) { 
+                        j1G1 += forca; 
+                        turno = 1; 
+                    } else if (alvo == 2 && j1G2 > 0) { 
+                        j1G2 += forca; 
+                        turno = 1; 
+                    } else {
+                        printf("\nEsta gosma inimiga ja esta morta! Escolha outra.\n");
+                        Sleep(2000);
+                        continue;
+                    }
+                } else {
+                    printf("\nSua gosma de origem esta morta e nao pode atacar!\n");
+                    Sleep(2000);
+                    continue;
+                }
+            }
+
+            // REGRA DO ESTOURO
+            if(j1G1 > 5) j1G1 = 0;
+            if(j1G2 > 5) j1G2 = 0;
+            if(j2G1 > 5) j2G1 = 0;
+            if(j2G2 > 5) j2G2 = 0;
+
+        } else if (opcao == 2) {
+            int dividiu = 0;
+            int soma, novaG1, novaG2;
+
+            if (turno == 1) {
+                soma = j1G1 + j1G2;
+                novaG1 = soma / 2;
+                novaG2 = soma - novaG1; 
+                
+                if (soma >= 2 && !((novaG1 == j1G1 && novaG2 == j1G2) || (novaG1 == j1G2 && novaG2 == j1G1))) {
+                    j1G1 = novaG1;
+                    j1G2 = novaG2;
+                    dividiu = 1;
+                }
+            } else {
+                soma = j2G1 + j2G2;
+                novaG1 = soma / 2;
+                novaG2 = soma - novaG1;
+                
+                if (soma >= 2 && !((novaG1 == j2G1 && novaG2 == j2G2) || (novaG1 == j2G2 && novaG2 == j2G1))) {
+                    j2G1 = novaG1;
+                    j2G2 = novaG2;
+                    dividiu = 1;
+                }
+            }
+            
+            if(dividiu == 1) {
+                turno = (turno == 1) ? 2 : 1; 
+            } else {
+                printf("\nImpossivel dividir! Isso nao alteraria suas gosmas ou voce nao tem pontos suficientes.\n");
+                Sleep(3000);
+                continue;
+            }
+        }
+    }
+    
+    system("cls");
+    printf("--- FIM DE JOGO ---\n\n");
+    if(j1G1 == 0 && j1G2 == 0) {
+        printf("?? JOGADOR 2 VENCEU A GUERRA DAS GOSMAS! ??\n\n");
+    } else {
+        printf("?? JOGADOR 1 VENCEU A GUERRA DAS GOSMAS! ??\n\n");
+    }
+    
+    system("pause");
+    return 0;
+}
