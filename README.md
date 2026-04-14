@@ -23,7 +23,7 @@ A Regra de Ouro: Se uma gosma inimiga ultrapassar 5 pontos, ela "estoura" e morr
 
 
 # O QUE FOI PRATICADO 🤓
-Vriáveis,
+Variáveis,
 Strings (strcpy, char),
 Input (scanf),
 Output (printf),
