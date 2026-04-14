@@ -18,7 +18,8 @@ Como funciona: Cada jogador começa com duas "Gosmas", cada uma com 1 ponto de v
 A Regra de Ouro: Se uma gosma inimiga ultrapassar 5 pontos, ela "estoura" e morre (vai a zero). O objetivo é forçar as gosmas do adversário a passarem de 5 pontos. O último jogador com gosmas vivas no tabuleiro vence.
 
 # LINGUAGEM DA PROGRAMAÇÃO 👨‍💻
-C 
+<img width="125" height="129" alt="image" src="https://github.com/user-attachments/assets/100f3612-9eb9-490d-a9fb-01629814c71d" />
+
 
 
 # O QUE FOI PRATICADO 🤓
