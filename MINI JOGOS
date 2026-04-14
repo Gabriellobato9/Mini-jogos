@@ -1,7 +1,7 @@
 # Mini-jogos
 Criadores: Gabriel Lobato e Gabriel Saldanha.
 
-#Sobre os Jogos
+SOBRE OS JOGOS: 
 Jogo de Perguntas e Respostas 🧠
 O que é: Um quiz interativo focado em testar os conhecimentos do jogador sobre lógica de programação e a linguagem C.
 Como funciona: O sistema apresenta 5 perguntas de múltipla escolha (com 4 alternativas cada). O jogador escolhe sua resposta e recebe um feedback imediato (correto ou incorreto) informando a resposta exata caso tenha errado.
