@@ -1,8 +1,8 @@
-MINI JOGOS
+# MINI JOGOS 🎮 
 
--CRIADORES: Gabriel Lobato e Gabriel Saldanha.
+CRIADORES: Gabriel Lobato e Gabriel Saldanha.
 
--SOBRE OS JOGOS:
+# SOBRE OS JOGOS 🕹️
 
 Jogo de Perguntas e Respostas 🧠
 O que é: Um quiz interativo focado em testar os conhecimentos do jogador sobre lógica de programação e a linguagem C.
@@ -17,11 +17,12 @@ O que é: Um jogo de estratégia matemática e duelo por turnos para dois jogado
 Como funciona: Cada jogador começa com duas "Gosmas", cada uma com 1 ponto de vida. No seu turno, o jogador pode usar uma de suas gosmas para Atacar (somando o valor da sua gosma ao valor da gosma inimiga) ou Dividir/Redistribuir os pontos entre as suas próprias gosmas.
 A Regra de Ouro: Se uma gosma inimiga ultrapassar 5 pontos, ela "estoura" e morre (vai a zero). O objetivo é forçar as gosmas do adversário a passarem de 5 pontos. O último jogador com gosmas vivas no tabuleiro vence.
 
--LINGUAGEM DA PROGRAMAÇÃO EM C
+# LINGUAGEM DA PROGRAMAÇÃO 👨‍💻
+C 
 
--O QUE FOI PRATICADO:
-Variáveis,
-Vetores / Arrays,
+
+# O QUE FOI PRATICADO 🤓
+Vriáveis,
 Strings (strcpy, char),
 Input (scanf),
 Output (printf),
@@ -33,7 +34,7 @@ Geração de números aleatórios (rand, srand),
 Validação de entrada,
 Lógica de turnos,
 
-REFERÊNCIAS: 
+# REFERÊNCIAS 📖
 
 Claude Code (Clude.AI):
 Utilizacao de funcao getchar,
